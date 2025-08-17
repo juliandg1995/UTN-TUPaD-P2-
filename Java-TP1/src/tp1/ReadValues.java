@@ -1,4 +1,4 @@
-package javaapplication1;
+package tp1;
 import  java.util.Scanner;
 
 /**

@@ -1,5 +1,5 @@
 
-package javaapplication1;
+package tp1;
 
 /**
  * @author Julian Daniel Gómez <https://github.com/juliandg1995>
