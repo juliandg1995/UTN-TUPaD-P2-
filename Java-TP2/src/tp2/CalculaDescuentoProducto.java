@@ -2,7 +2,7 @@ package tp2;
 import java.util.Scanner;
 
 /**
- *
+ * TP2 - Ejercicio 4
  * @author Julian Daniel Gómez <https://github.com/juliandg1995>
  */
 public class CalculaDescuentoProducto {
