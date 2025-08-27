@@ -1,17 +1,13 @@
-# --- Basura de SO ---
-.DS_Store
-Thumbs.db
-
-# --- NetBeans (Ant) ---
+# NetBeans (Ant) - archivos privados/autogenerados
 **/nbproject/private/
 **/nbproject/build-impl.xml
 **/nbproject/genfiles.properties
 
-# --- Artefactos de build (Ant) ---
+# Artefactos de build
 **/build/
 **/dist/
 
-# --- Compilados / temporales ---
+# Compilados/temporales
 **/*.class
 *.log
 *.tmp
