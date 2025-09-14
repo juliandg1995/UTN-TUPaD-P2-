@@ -20,15 +20,17 @@ public final class Consola {
             System.out.println("No puede quedar vacío.");
         }
     }
-
-    public static String leerCoincidiendo(String prompt, String regex, String msgError) {
+    
+    // Lee inputs de texto, utilizando un patrón regex para validar que el tipo y formato sea correcto
+    public static String leerTextoValidado(String texto, String regex, String msgError) {
         while (true) {
-            String s = leerLineaNoVacia(prompt);
+            String s = leerLineaNoVacia(texto);
             if (s.matches(regex)) return s;
             System.out.println(msgError);
         }
     }
-
+    
+    // Lee valores int
     public static int leerEntero(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -40,7 +42,8 @@ public final class Consola {
             }
         }
     }
-
+    
+    // Lee valores int dentro de un rango
     public static int leerEntero(String prompt, int min, int max) {
         while (true) {
             int v = leerEntero(prompt);
@@ -49,7 +52,8 @@ public final class Consola {
             } else return v;
         }
     }
-
+    
+    // Lee valores double
     public static double leerDouble(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -62,6 +66,7 @@ public final class Consola {
         }
     }
 
+    // Lee valores double dentro de un rango
     public static double leerDouble(String prompt, double min, double max) {
         while (true) {
             double v = leerDouble(prompt);
@@ -70,7 +75,8 @@ public final class Consola {
             } else return v;
         }
     }
-
+    
+    // Valida inputs de confirmación del usuario para responder si/no
     public static boolean leerSiNo(String prompt) {
         while (true) {
             String s = leerLineaNoVacia(prompt + " (s/n): ").toLowerCase();
