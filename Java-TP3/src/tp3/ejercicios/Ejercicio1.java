@@ -1,6 +1,7 @@
 package tp3.ejercicios;
 
 import tp3.io.Consola;
+import tp3.io.Patrones;
 import tp3.modelos.Estudiante;
 
 /**
@@ -19,17 +20,17 @@ public class Ejercicio1 {
         // Se ingresan los datos para probar las funcionalidades 
         String nombre = Consola.leerTextoValidado(
                 "Nombre: ",
-                "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,40}$",  // Formato válido para texto
+                Patrones.alfanumericoUnicode(1, 40),         // Formato válido para el texto
                 "Ingrese solo letras y espacios (2 a 40 caracteres)."  
         );
         String apellido = Consola.leerTextoValidado(
                 "Apellido: ",
-                "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,40}$",
+                Patrones.alfanumericoUnicode(1, 40),
                 "Ingrese solo letras y espacios (2 a 40 caracteres)."
         );
         String curso = Consola.leerTextoValidado(
                 "Curso (ej.: 1A, 3ro B): ",
-                "^[\\p{L}0-9\\-_/ ]{1,20}$",            // Formato válido para indiarel curso
+                Patrones.alfanumericoUnicode(1, 40),
                 "Formato inválido. Use letras/números/espacios/-/_/ (1-20)."
         );
         double calificacionInicial = Consola.leerDouble("Calificación inicial (0..10): ", 0, 10);
