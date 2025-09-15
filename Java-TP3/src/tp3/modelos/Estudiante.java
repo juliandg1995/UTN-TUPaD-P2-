@@ -2,7 +2,7 @@ package tp3.modelos;
 
 /**
  * @author Julian Daniel Gómez <https://github.com/juliandg1995>
- * Entidad Estudiante
+ * Entidad Estudiante para el ejercicio 1
  */
 public class Estudiante {
     

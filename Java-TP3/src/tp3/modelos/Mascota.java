@@ -2,7 +2,7 @@ package tp3.modelos;
 
 /**
  * @author Julian Daniel Gómez <https://github.com/juliandg1995>
- * Entidad Mascota con encapsulamiento, constructores y operaciones de edad.
+ * Entidad Mascota para el ejercicio 2.
  */
 public class Mascota {
     // Atributos privados
