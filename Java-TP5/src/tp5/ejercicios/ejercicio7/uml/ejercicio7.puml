@@ -1,0 +1,54 @@
+@startuml
+package tp5.ejercicios.ejercicio7 {
+  class Vehiculo {
+    - patente : String
+    - modelo : String
+    - motor : Motor
+    - conductor : Conductor
+    + Vehiculo()
+    + Vehiculo(patente:String, modelo:String, motor:Motor, conductor:Conductor)
+    + getPatente() : String
+    + setPatente(String) : void
+    + getModelo() : String
+    + setModelo(String) : void
+    + getMotor() : Motor
+    + setMotor(Motor) : void
+    + getConductor() : Conductor
+    + setConductor(Conductor) : void
+    + toString() : String
+  }
+
+  class Motor {
+    - tipo : String
+    - numeroSerie : String
+    + Motor()
+    + Motor(tipo:String, numeroSerie:String)
+    + getTipo() : String
+    + setTipo(String) : void
+    + getNumeroSerie() : String
+    + setNumeroSerie(String) : void
+    + toString() : String
+  }
+
+  class Conductor {
+    - nombre : String
+    - licencia : String
+    - vehiculo : Vehiculo
+    + Conductor()
+    + Conductor(nombre:String, licencia:String, vehiculo:Vehiculo)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getLicencia() : String
+    + setLicencia(String) : void
+    + getVehiculo() : Vehiculo
+    + setVehiculo(Vehiculo) : void
+    + toString() : String
+  }
+
+  ' Agregacion: Vehiculo -> Motor
+  Vehiculo o-- Motor : agregacion
+
+  ' Asociacion bidireccional 1<->1
+  Vehiculo "1" -- "1" Conductor : asociacion
+}
+@enduml

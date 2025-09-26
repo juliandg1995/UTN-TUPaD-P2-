@@ -1,0 +1,51 @@
+@startuml
+package tp5.ejercicios.ejercicio6 {
+  class Reserva {
+    - fecha : LocalDate
+    - hora : String
+    - cliente : Cliente
+    - mesa : Mesa
+    + Reserva()
+    + Reserva(fecha:LocalDate, hora:String, cliente:Cliente, mesa:Mesa)
+    + getFecha() : LocalDate
+    + setFecha(LocalDate) : void
+    + getHora() : String
+    + setHora(String) : void
+    + getCliente() : Cliente
+    + setCliente(Cliente) : void
+    + getMesa() : Mesa
+    + setMesa(Mesa) : void
+    + toString() : String
+  }
+
+  class Cliente {
+    - nombre : String
+    - telefono : String
+    + Cliente()
+    + Cliente(nombre:String, telefono:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getTelefono() : String
+    + setTelefono(String) : void
+    + toString() : String
+  }
+
+  class Mesa {
+    - numero : int
+    - capacidad : int
+    + Mesa()
+    + Mesa(numero:int, capacidad:int)
+    + getNumero() : int
+    + setNumero(int) : void
+    + getCapacidad() : int
+    + setCapacidad(int) : void
+    + toString() : String
+  }
+
+  ' Asociacion unidireccional: Reserva -> Cliente
+  Reserva --> Cliente : asociacion
+
+  ' Agregacion: Reserva -> Mesa
+  Reserva o-- Mesa : agregacion
+}
+@enduml

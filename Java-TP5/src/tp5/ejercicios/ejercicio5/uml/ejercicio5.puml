@@ -1,0 +1,54 @@
+@startuml
+package tp5.ejercicios.ejercicio5 {
+  class Computadora {
+    - marca : String
+    - numeroSerie : String
+    - placaMadre : PlacaMadre
+    - propietario : Propietario
+    + Computadora()
+    + Computadora(marca:String, numeroSerie:String, placaMadre:PlacaMadre, propietario:Propietario)
+    + getMarca() : String
+    + setMarca(String) : void
+    + getNumeroSerie() : String
+    + setNumeroSerie(String) : void
+    + getPlacaMadre() : PlacaMadre
+    + setPlacaMadre(PlacaMadre) : void
+    + getPropietario() : Propietario
+    + setPropietario(Propietario) : void
+    + toString() : String
+  }
+
+  class PlacaMadre {
+    - modelo : String
+    - chipset : String
+    + PlacaMadre()
+    + PlacaMadre(modelo:String, chipset:String)
+    + getModelo() : String
+    + setModelo(String) : void
+    + getChipset() : String
+    + setChipset(String) : void
+    + toString() : String
+  }
+
+  class Propietario {
+    - nombre : String
+    - dni : String
+    - computadora : Computadora
+    + Propietario()
+    + Propietario(nombre:String, dni:String, computadora:Computadora)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDni() : String
+    + setDni(String) : void
+    + getComputadora() : Computadora
+    + setComputadora(Computadora) : void
+    + toString() : String
+  }
+
+  ' Composicion: Computadora -> PlacaMadre (diamante solido en Computadora)
+  Computadora *-- PlacaMadre : composicion
+
+  ' Asociacion bidireccional 1<->1
+  Computadora "1" -- "1" Propietario : asociacion
+}
+@enduml
