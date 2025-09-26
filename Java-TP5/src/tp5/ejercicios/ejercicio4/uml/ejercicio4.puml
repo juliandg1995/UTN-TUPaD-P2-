@@ -1,0 +1,54 @@
+@startuml
+package tp5.ejercicios.ejercicio4 {
+  class TarjetaDeCredito {
+    - numero : String
+    - fechaVencimiento : LocalDate
+    - cliente : Cliente
+    - banco : Banco
+    + TarjetaDeCredito()
+    + TarjetaDeCredito(numero:String, fechaVencimiento:LocalDate, cliente:Cliente, banco:Banco)
+    + getNumero() : String
+    + setNumero(String) : void
+    + getFechaVencimiento() : LocalDate
+    + setFechaVencimiento(LocalDate) : void
+    + getCliente() : Cliente
+    + setCliente(Cliente) : void
+    + getBanco() : Banco
+    + setBanco(Banco) : void
+    + toString() : String
+  }
+
+  class Cliente {
+    - nombre : String
+    - dni : String
+    - tarjeta : TarjetaDeCredito
+    + Cliente()
+    + Cliente(nombre:String, dni:String, tarjeta:TarjetaDeCredito)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDni() : String
+    + setDni(String) : void
+    + getTarjeta() : TarjetaDeCredito
+    + setTarjeta(TarjetaDeCredito) : void
+    + toString() : String
+  }
+
+  class Banco {
+    - nombre : String
+    - cuit : String
+    + Banco()
+    + Banco(nombre:String, cuit:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getCuit() : String
+    + setCuit(String) : void
+    + toString() : String
+  }
+
+  ' Asociacion bidireccional 1<->1
+  TarjetaDeCredito "1" -- "1" Cliente : asociacion
+
+  ' Agregacion: TarjetaDeCredito -> Banco
+  TarjetaDeCredito o-- Banco : agregacion
+}
+@enduml
