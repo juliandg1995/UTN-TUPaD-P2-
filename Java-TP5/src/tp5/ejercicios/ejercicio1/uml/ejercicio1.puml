@@ -1,0 +1,48 @@
+@startuml
+package tp5.ejercicios.ejercicio1 {
+  class Pasaporte {
+    - numero : String
+    - fechaEmision : LocalDate
+    - foto : Foto
+    - titular : Titular
+    + Pasaporte()
+    + Pasaporte(numero:String, fechaEmision:LocalDate, foto:Foto, titular:Titular)
+    + getNumero() : String
+    + setNumero(String) : void
+    + getFechaEmision() : LocalDate
+    + setFechaEmision(LocalDate) : void
+    + getFoto() : Foto
+    + setFoto(Foto) : void
+    + getTitular() : Titular
+    + setTitular(Titular) : void
+  }
+
+  class Foto {
+    - imagen : String
+    - formato : String
+    + Foto()
+    + Foto(imagen:String, formato:String)
+    + getImagen() : String
+    + setImagen(String) : void
+    + getFormato() : String
+    + setFormato(String) : void
+  }
+
+  class Titular {
+    - nombre : String
+    - dni : String
+    - pasaporte : Pasaporte
+    + Titular()
+    + Titular(nombre:String, dni:String, pasaporte:Pasaporte)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDni() : String
+    + setDni(String) : void
+    + getPasaporte() : Pasaporte
+    + setPasaporte(Pasaporte) : void
+  }
+
+  Pasaporte "1" *-- "1" Foto       : composición
+  Pasaporte "1" <--> "1" Titular   : asociación 1 a 1
+}
+@enduml

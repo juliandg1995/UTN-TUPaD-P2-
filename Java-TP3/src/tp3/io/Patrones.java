@@ -22,4 +22,16 @@ public final class Patrones {
     public static String numerico(int minLen, int maxLen) {
         return "^\\d{" + minLen + "," + maxLen + "}$";
     }
+    
+     public static String fechaISO(){
+        return "^\\d{4}-\\d{2}-\\d{2}$";
+    }
+
+    public static String formatoImagenBasico(){
+        return "(?i)^(JPG|PNG)$";
+    }
+
+    public static String siNoBasico(){
+        return "(?i)^(s|si|sí|n|no)$";
+    }
 }

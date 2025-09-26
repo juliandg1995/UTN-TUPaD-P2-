@@ -2,6 +2,9 @@ package tp3.io;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * @author Julian Daniel Gómez <https://github.com/juliandg1995>
@@ -85,4 +88,18 @@ public final class Consola {
             System.out.println("Responda con 's' o 'n'.");
         }
     }
+
+  // lee fecha ISO yyyy-MM-dd con reintentos, devolviendo LocalDate
+    public static LocalDate leerFechaISO(String prompt){
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        while(true){
+            String s = leerTextoValidado(prompt+" (yyyy-MM-dd): ", Patrones.fechaISO(), "Fecha inválida. Ej: 2025-09-24");
+            try{
+                return LocalDate.parse(s, fmt);
+            }catch(DateTimeParseException e){
+                System.out.println("Fecha inválida. Ej: 2025-09-24");
+            }
+        }
+    }
+
 }
