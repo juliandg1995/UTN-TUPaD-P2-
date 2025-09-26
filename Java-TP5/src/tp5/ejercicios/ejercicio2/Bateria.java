@@ -34,7 +34,8 @@ public class Bateria{
     public void setCapacidad(int capacidad){
         this.capacidad = capacidad;
     }
-
+    
+    // toString
     @Override
     public String toString(){
         return "Bateria{modelo=" + modelo + ", capacidad=" + capacidad + "}";

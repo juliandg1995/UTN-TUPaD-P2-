@@ -1,0 +1,52 @@
+@startuml
+package tp5.ejercicios.ejercicio3 {
+  class Libro {
+    - titulo : String
+    - isbn : String
+    - autor : Autor
+    - editorial : Editorial
+    + Libro()
+    + Libro(titulo:String, isbn:String, autor:Autor, editorial:Editorial)
+    + getTitulo() : String
+    + setTitulo(String) : void
+    + getIsbn() : String
+    + setIsbn(String) : void
+    + getAutor() : Autor
+    + setAutor(Autor) : void
+    + getEditorial() : Editorial
+    + setEditorial(Editorial) : void
+    + toString() : String
+  }
+
+  class Autor {
+    - nombre : String
+    - nacionalidad : String
+    + Autor()
+    + Autor(nombre:String, nacionalidad:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getNacionalidad() : String
+    + setNacionalidad(String) : void
+    + toString() : String
+  }
+
+  class Editorial {
+    - nombre : String
+    - direccion : String
+    + Editorial()
+    + Editorial(nombre:String, direccion:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDireccion() : String
+    + setDireccion(String) : void
+    + toString() : String
+  }
+
+  ' Asociacion unidireccional: Libro -> Autor
+  Libro --> Autor : asociacion
+
+  ' Agregacion: Libro -> Editorial (diamante vacio en Libro)
+  Libro o-- Editorial : agregacion
+}
+
+@enduml
