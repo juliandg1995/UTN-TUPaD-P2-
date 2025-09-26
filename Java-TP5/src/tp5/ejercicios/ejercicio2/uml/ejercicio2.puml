@@ -1,0 +1,57 @@
+@startuml
+package tp5.ejercicios.ejercicio2 {
+  class Celular {
+    - imei : String
+    - marca : String
+    - modelo : String
+    - bateria : Bateria
+    - usuario : Usuario
+    + Celular()
+    + Celular(imei:String, marca:String, modelo:String, bateria:Bateria, usuario:Usuario)
+    + getImei() : String
+    + setImei(String) : void
+    + getMarca() : String
+    + setMarca(String) : void
+    + getModelo() : String
+    + setModelo(String) : void
+    + getBateria() : Bateria
+    + setBateria(Bateria) : void
+    + getUsuario() : Usuario
+    + setUsuario(Usuario) : void
+    + toString() : String
+  }
+
+  class Bateria {
+    - modelo : String
+    - capacidad : int
+    + Bateria()
+    + Bateria(modelo:String, capacidad:int)
+    + getModelo() : String
+    + setModelo(String) : void
+    + getCapacidad() : int
+    + setCapacidad(int) : void
+    + toString() : String
+  }
+
+  class Usuario {
+    - nombre : String
+    - dni : String
+    - celular : Celular
+    + Usuario()
+    + Usuario(nombre:String, dni:String, celular:Celular)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDni() : String
+    + setDni(String) : void
+    + getCelular() : Celular
+    + setCelular(Celular) : void
+    + toString() : String
+  }
+
+  ' Agregación: Celular → Bateria (diamante vacío del lado de Celular)
+  Celular o-- Bateria : agregación
+
+  ' Asociación bidireccional 1↔1: Celular ↔ Usuario
+  Celular "1" -- "1" Usuario : asociación 1 a 1
+}
+@enduml

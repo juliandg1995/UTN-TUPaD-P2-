@@ -18,7 +18,7 @@ public class Ejercicio1{
         String numero = Consola.leerTextoValidado(
             "Número de pasaporte: ",
             Patrones.alfanumericoUnicode(3, 30),
-            "Formato inválido. Use 3..30 caracteres alfanuméricos/espacio."
+            "Formato inválido. Use 3..30 caracteres alfanuméricos."
         );
 
         LocalDate fechaEmision = Consola.leerFechaISO("Fecha de emisión");
@@ -26,7 +26,7 @@ public class Ejercicio1{
         String nombre = Consola.leerTextoValidado(
             "Nombre del titular: ",
             Patrones.alfanumericoUnicode(1, 60),
-            "Nombre inválido (1..60 letras/dígitos/espacios)."
+            "Nombre inválido (1..60 caracteres)."
         );
 
         String dni = Consola.leerTextoValidado(
@@ -53,7 +53,7 @@ public class Ejercicio1{
         Pasaporte p = new Pasaporte(numero,fechaEmision,foto,titular); // Como es relación de composición, fuerzo la dependencia de Pasaporte con Foto
         titular.setPasaporte(p); // enlace bidireccional entre ambas clases
 
-        System.out.println("\n=== Resultado ===");
+        System.out.println("\n ---- Resultado ---- ");
         System.out.println(p.toString());
         System.out.println(titular.toString());
         System.out.println(foto.toString());
