@@ -1,0 +1,51 @@
+@startuml
+package tp5.ejercicios.ejercicio8 {
+  class Documento {
+    - titulo : String
+    - contenido : String
+    - firma : FirmaDigital
+    + Documento()
+    + Documento(titulo:String, contenido:String, firma:FirmaDigital)
+    + getTitulo() : String
+    + setTitulo(String) : void
+    + getContenido() : String
+    + setContenido(String) : void
+    + getFirma() : FirmaDigital
+    + setFirma(FirmaDigital) : void
+    + toString() : String
+  }
+
+  class FirmaDigital {
+    - codigoHash : String
+    - fecha : LocalDate
+    - usuario : Usuario
+    + FirmaDigital()
+    + FirmaDigital(codigoHash:String, fecha:LocalDate, usuario:Usuario)
+    + getCodigoHash() : String
+    + setCodigoHash(String) : void
+    + getFecha() : LocalDate
+    + setFecha(LocalDate) : void
+    + getUsuario() : Usuario
+    + setUsuario(Usuario) : void
+    + toString() : String
+  }
+
+  class Usuario {
+    - nombre : String
+    - email : String
+    + Usuario()
+    + Usuario(nombre:String, email:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getEmail() : String
+    + setEmail(String) : void
+    + toString() : String
+  }
+
+  ' Composicion: Documento -> FirmaDigital (diamante solido en Documento)
+  Documento *-- FirmaDigital : composicion
+
+  ' Agregacion: FirmaDigital -> Usuario (diamante vacio en FirmaDigital)
+  FirmaDigital o-- Usuario : agregacion
+}
+@enduml

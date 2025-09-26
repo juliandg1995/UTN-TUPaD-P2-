@@ -1,0 +1,39 @@
+@startuml
+package tp5.ejercicios.ejercicio12 {
+  class Impuesto {
+    - monto : double
+    - contribuyente : Contribuyente
+    + Impuesto()
+    + Impuesto(monto:double, contribuyente:Contribuyente)
+    + getMonto() : double
+    + setMonto(double) : void
+    + getContribuyente() : Contribuyente
+    + setContribuyente(Contribuyente) : void
+    + toString() : String
+  }
+
+  class Contribuyente {
+    - nombre : String
+    - cuil : String
+    + Contribuyente()
+    + Contribuyente(nombre:String, cuil:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getCuil() : String
+    + setCuil(String) : void
+    + toString() : String
+  }
+
+  class Calculadora {
+    + Calculadora()
+    + calcular(impuesto:Impuesto) : void
+    + toString() : String
+  }
+
+  ' Asociacion unidireccional: Impuesto -> Contribuyente
+  Impuesto --> Contribuyente : asociacion
+
+  ' Dependencia de uso: Calculadora usa Impuesto en calcular(...)
+  Calculadora ..> Impuesto : dependencia (usa)
+}
+@enduml

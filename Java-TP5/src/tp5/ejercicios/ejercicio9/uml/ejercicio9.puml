@@ -1,0 +1,49 @@
+@startuml
+package tp5.ejercicios.ejercicio9 {
+  class CitaMedica {
+    - fecha : LocalDate
+    - hora : String
+    - paciente : Paciente
+    - profesional : Profesional
+    + CitaMedica()
+    + CitaMedica(fecha:LocalDate, hora:String, paciente:Paciente, profesional:Profesional)
+    + getFecha() : LocalDate
+    + setFecha(LocalDate) : void
+    + getHora() : String
+    + setHora(String) : void
+    + getPaciente() : Paciente
+    + setPaciente(Paciente) : void
+    + getProfesional() : Profesional
+    + setProfesional(Profesional) : void
+    + toString() : String
+  }
+
+  class Paciente {
+    - nombre : String
+    - obraSocial : String
+    + Paciente()
+    + Paciente(nombre:String, obraSocial:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getObraSocial() : String
+    + setObraSocial(String) : void
+    + toString() : String
+  }
+
+  class Profesional {
+    - nombre : String
+    - especialidad : String
+    + Profesional()
+    + Profesional(nombre:String, especialidad:String)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getEspecialidad() : String
+    + setEspecialidad(String) : void
+    + toString() : String
+  }
+
+  ' Asociaciones unidireccionales desde CitaMedica
+  CitaMedica --> Paciente : asociacion
+  CitaMedica --> Profesional : asociacion
+}
+@enduml

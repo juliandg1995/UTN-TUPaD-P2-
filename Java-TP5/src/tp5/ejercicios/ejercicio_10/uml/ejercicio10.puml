@@ -1,0 +1,54 @@
+@startuml
+package tp5.ejercicios.ejercicio10 {
+  class CuentaBancaria {
+    - cbu : String
+    - saldo : double
+    - clave : ClaveSeguridad
+    - titular : Titular
+    + CuentaBancaria()
+    + CuentaBancaria(cbu:String, saldo:double, clave:ClaveSeguridad, titular:Titular)
+    + getCbu() : String
+    + setCbu(String) : void
+    + getSaldo() : double
+    + setSaldo(double) : void
+    + getClave() : ClaveSeguridad
+    + setClave(ClaveSeguridad) : void
+    + getTitular() : Titular
+    + setTitular(Titular) : void
+    + toString() : String
+  }
+
+  class ClaveSeguridad {
+    - codigo : String
+    - ultimaModificacion : LocalDate
+    + ClaveSeguridad()
+    + ClaveSeguridad(codigo:String, ultimaModificacion:LocalDate)
+    + getCodigo() : String
+    + setCodigo(String) : void
+    + getUltimaModificacion() : LocalDate
+    + setUltimaModificacion(LocalDate) : void
+    + toString() : String
+  }
+
+  class Titular {
+    - nombre : String
+    - dni : String
+    - cuenta : CuentaBancaria
+    + Titular()
+    + Titular(nombre:String, dni:String, cuenta:CuentaBancaria)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDni() : String
+    + setDni(String) : void
+    + getCuenta() : CuentaBancaria
+    + setCuenta(CuentaBancaria) : void
+    + toString() : String
+  }
+
+  ' Composicion: CuentaBancaria -> ClaveSeguridad
+  CuentaBancaria *-- ClaveSeguridad : composicion
+
+  ' Asociacion bidireccional
+  CuentaBancaria "1" -- "1" Titular : asociacion
+}
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+package tp5.ejercicios.ejercicio14 {
+  class Render {
+    - formato : String
+    - proyecto : Proyecto
+    + Render()
+    + Render(formato:String, proyecto:Proyecto)
+    + getFormato() : String
+    + setFormato(String) : void
+    + getProyecto() : Proyecto
+    + setProyecto(Proyecto) : void
+    + toString() : String
+  }
+
+  class Proyecto {
+    - nombre : String
+    - duracionMin : int
+    + Proyecto()
+    + Proyecto(nombre:String, duracionMin:int)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getDuracionMin() : int
+    + setDuracionMin(int) : void
+    + toString() : String
+  }
+
+  class EditorVideo {
+    + EditorVideo()
+    + exportar(formato:String, proyecto:Proyecto) : void
+    + toString() : String
+  }
+
+  ' Asociacion unidireccional: Render -> Proyecto
+  Render --> Proyecto : asociacion
+
+  ' Dependencia de creacion: EditorVideo crea Render dentro de exportar()
+  EditorVideo ..> Render : dependencia (crea)
+}
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+package tp5.ejercicios.ejercicio13 {
+  class CodigoQR {
+    - valor : String
+    - usuario : tp5.ejercicios.ejercicio8.Usuario
+    + CodigoQR()
+    + CodigoQR(valor:String, usuario:tp5.ejercicios.ejercicio8.Usuario)
+    + getValor() : String
+    + setValor(String) : void
+    + getUsuario() : tp5.ejercicios.ejercicio8.Usuario
+    + setUsuario(tp5.ejercicios.ejercicio8.Usuario) : void
+    + toString() : String
+  }
+
+  class GeneradorQR {
+    + GeneradorQR()
+    + generar(valor:String, usuario:tp5.ejercicios.ejercicio8.Usuario) : void
+    + toString() : String
+  }
+
+  ' Asociacion unidireccional: CodigoQR -> Usuario (reutilizado de ejercicio8)
+  CodigoQR --> "tp5.ejercicios.ejercicio8.Usuario" : asociacion
+
+  ' Dependencia de creacion
+  GeneradorQR ..> CodigoQR : dependencia (crea)
+}
+@enduml

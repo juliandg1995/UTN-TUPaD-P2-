@@ -1,0 +1,43 @@
+@startuml
+package tp5.ejercicios.ejercicio11 {
+  class Cancion {
+    - titulo : String
+    - artistas : List<Artista>
+    + Cancion()
+    + Cancion(titulo:String, artistas:List<Artista>)
+    + getTitulo() : String
+    + setTitulo(String) : void
+    + getArtistas() : List<Artista>
+    + setArtistas(List<Artista>) : void
+    + toString() : String
+  }
+
+  class Artista {
+    - nombre : String
+    - genero : String
+    - canciones : List<Cancion>
+    + Artista()
+    + Artista(nombre:String, genero:String, canciones:List<Cancion>)
+    + getNombre() : String
+    + setNombre(String) : void
+    + getGenero() : String
+    + setGenero(String) : void
+    + getCanciones() : List<Cancion>
+    + setCanciones(List<Cancion>) : void
+    + addCancion(Cancion) : void
+    + toString() : String
+  }
+
+  class Reproductor {
+    + Reproductor()
+    + reproducir(cancion:Cancion) : void
+    + toString() : String
+  }
+
+  ' Asociacion bidireccional N<->N entre Cancion y Artista
+  Cancion "1..*" -- "1..*" Artista : asociacion
+
+  ' Dependencia de uso
+  Reproductor ..> Cancion : dependencia (usa)
+}
+@enduml
