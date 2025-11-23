@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="TestSinDependenciasCirculares" package="test" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TestTransaccionSimple" package="test" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TestAppMenuEstructura" package="test" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TestService" package="test" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="demostrarValidaciones" returnType="void" visibility="private" isStatic="true"/>
+        <Method name="demostrarTransacciones" returnType="void" visibility="private" isStatic="true"/>
+        <Method name="demostrarOrquestacion" returnType="void" visibility="private" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="TestDatabaseConfig" package="test" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TestLimpiezaBD" package="test" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="LibroService" package="service" visibility="public" xPosition="832.0" yPosition="296.0">
+      <Methods>
+        <Method name="crearLibroConFicha" returnType="void" visibility="package">
+          <Argument type="Libro" name="libro"/>
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="asignarFichaBibliografica" returnType="void" visibility="package">
+          <Argument type="Long" name="idLibro"/>
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="buscarPorTitulo" returnType="Libro" visibility="package">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="existeLibroConTitulo" returnType="boolean" visibility="package">
+          <Argument type="String" name="titulo"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="FichaBibliograficaService" package="service" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Methods>
+        <Method name="buscarPorIsbn" returnType="FichaBibliografica" visibility="package">
+          <Argument type="String" name="isbn"/>
+        </Method>
+        <Method name="validarIsbnUnico" returnType="void" visibility="package">
+          <Argument type="String" name="isbn"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

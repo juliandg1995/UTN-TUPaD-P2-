@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="DatabaseConnection" package="config" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="PROPERTIES_FILE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getConnection" returnType="Connection" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="FichaBibliograficaDao" package="dao" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="crear" returnType="void" visibility="public">
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="crear" returnType="void" visibility="public">
+          <Argument type="FichaBibliografica" name="ficha"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="leer" returnType="FichaBibliografica" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="leer" returnType="FichaBibliografica" visibility="public">
+          <Argument type="long" name="id"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="leerTodos" returnType="List&lt;FichaBibliografica&gt;" visibility="public"/>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="FichaBibliografica" name="ficha"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="long" name="id"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="mapearFicha" returnType="FichaBibliografica" visibility="private">
+          <Argument type="ResultSet" name="rs"/>
+        </Method>
+        <Method name="completarSetFicha" returnType="void" visibility="private">
+          <Argument type="FichaBibliografica" name="ficha"/>
+          <Argument type="PreparedStatement" name="ps"/>
+          <Argument type="int" name="offset"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="GenericDao" package="dao" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods>
+        <Method name="crear" returnType="void" visibility="package">
+          <Argument type="T" name="entidad"/>
+        </Method>
+        <Method name="leer" returnType="T" visibility="package">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="leerTodos" returnType="List&lt;T&gt;" visibility="package"/>
+        <Method name="actualizar" returnType="void" visibility="package">
+          <Argument type="T" name="entidad"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="package">
+          <Argument type="long" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="LibroDao" package="dao" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="fichaDao" type="FichaBibliograficaDao" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="crear" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="crear" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="leer" returnType="Libro" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="leerConFicha" returnType="Libro" visibility="public">
+          <Argument type="long" name="id"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="leerTodos" returnType="List&lt;Libro&gt;" visibility="public"/>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="long" name="id"/>
+          <Argument type="Connection" name="conn"/>
+        </Method>
+        <Method name="buscarPorIsbn" returnType="Libro" visibility="public">
+          <Argument type="String" name="isbn"/>
+        </Method>
+        <Method name="mapearLibro" returnType="Libro" visibility="private">
+          <Argument type="ResultSet" name="rs"/>
+        </Method>
+        <Method name="completarSetLibro" returnType="void" visibility="private">
+          <Argument type="Libro" name="libro"/>
+          <Argument type="PreparedStatement" name="ps"/>
+          <Argument type="int" name="offset"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FichaBibliografica" package="entities" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="eliminado" type="Boolean" visibility="private"/>
+        <Field name="isbn" type="String" visibility="private"/>
+        <Field name="clasificacionDewey" type="String" visibility="private"/>
+        <Field name="estanteria" type="String" visibility="private"/>
+        <Field name="idioma" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="id"/>
+          <Argument type="Boolean" name="eliminado"/>
+          <Argument type="String" name="isbn"/>
+          <Argument type="String" name="clasificacionDewey"/>
+          <Argument type="String" name="estanteria"/>
+          <Argument type="String" name="idioma"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getEliminado" returnType="Boolean" visibility="public"/>
+        <Method name="setEliminado" returnType="void" visibility="public">
+          <Argument type="Boolean" name="eliminado"/>
+        </Method>
+        <Method name="getIsbn" returnType="String" visibility="public"/>
+        <Method name="setIsbn" returnType="void" visibility="public">
+          <Argument type="String" name="isbn"/>
+        </Method>
+        <Method name="getClasificacionDewey" returnType="String" visibility="public"/>
+        <Method name="setClasificacionDewey" returnType="void" visibility="public">
+          <Argument type="String" name="clasificacionDewey"/>
+        </Method>
+        <Method name="getEstanteria" returnType="String" visibility="public"/>
+        <Method name="setEstanteria" returnType="void" visibility="public">
+          <Argument type="String" name="estanteria"/>
+        </Method>
+        <Method name="getIdioma" returnType="String" visibility="public"/>
+        <Method name="setIdioma" returnType="void" visibility="public">
+          <Argument type="String" name="idioma"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Libro" package="entities" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="id" type="Long" visibility="private"/>
+        <Field name="eliminado" type="Boolean" visibility="private"/>
+        <Field name="titulo" type="String" visibility="private"/>
+        <Field name="autor" type="String" visibility="private"/>
+        <Field name="editorial" type="String" visibility="private"/>
+        <Field name="anioEdicion" type="Integer" visibility="private"/>
+        <Field name="fichaBibliografica" type="FichaBibliografica" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Long" name="id"/>
+          <Argument type="Boolean" name="eliminado"/>
+          <Argument type="String" name="titulo"/>
+          <Argument type="String" name="autor"/>
+          <Argument type="String" name="editorial"/>
+          <Argument type="Integer" name="anioEdicion"/>
+          <Argument type="FichaBibliografica" name="fichaBibliografica"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="Long" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="getEliminado" returnType="Boolean" visibility="public"/>
+        <Method name="setEliminado" returnType="void" visibility="public">
+          <Argument type="Boolean" name="eliminado"/>
+        </Method>
+        <Method name="getTitulo" returnType="String" visibility="public"/>
+        <Method name="setTitulo" returnType="void" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="getAutor" returnType="String" visibility="public"/>
+        <Method name="setAutor" returnType="void" visibility="public">
+          <Argument type="String" name="autor"/>
+        </Method>
+        <Method name="getEditorial" returnType="String" visibility="public"/>
+        <Method name="setEditorial" returnType="void" visibility="public">
+          <Argument type="String" name="editorial"/>
+        </Method>
+        <Method name="getAnioEdicion" returnType="Integer" visibility="public"/>
+        <Method name="setAnioEdicion" returnType="void" visibility="public">
+          <Argument type="Integer" name="anioEdicion"/>
+        </Method>
+        <Method name="getFichaBibliografica" returnType="FichaBibliografica" visibility="public"/>
+        <Method name="setFichaBibliografica" returnType="void" visibility="public">
+          <Argument type="FichaBibliografica" name="fichaBibliografica"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AppMenu" package="main" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="libroService" type="LibroService" visibility="private"/>
+        <Field name="scanner" type="Scanner" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="iniciar" returnType="void" visibility="public"/>
+        <Method name="mostrarMenuPrincipal" returnType="void" visibility="private"/>
+        <Method name="crearLibroConFicha" returnType="void" visibility="private"/>
+        <Method name="buscarLibroPorId" returnType="void" visibility="private"/>
+        <Method name="recortar" returnType="String" visibility="private">
+          <Argument type="String" name="texto"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="listarTodosLibros" returnType="void" visibility="private"/>
+        <Method name="actualizarLibro" returnType="void" visibility="private"/>
+        <Method name="eliminarLibro" returnType="void" visibility="private"/>
+        <Method name="buscarPorIsbn" returnType="void" visibility="private"/>
+        <Method name="buscarPorTitulo" returnType="void" visibility="private"/>
+        <Method name="leerCadena" returnType="String" visibility="private">
+          <Argument type="String" name="mensaje"/>
+          <Argument type="boolean" name="convertirMayusculas"/>
+        </Method>
+        <Method name="leerId" returnType="Long" visibility="private">
+          <Argument type="String" name="mensaje"/>
+        </Method>
+        <Method name="manejarError" returnType="void" visibility="private">
+          <Argument type="Exception" name="e"/>
+          <Argument type="String" name="operacion"/>
+        </Method>
+        <Method name="pausar" returnType="void" visibility="private">
+          <Argument type="String" name="mensaje"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Main" package="main" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="FichaBibliograficaService" package="service" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Methods>
+        <Method name="buscarPorIsbn" returnType="FichaBibliografica" visibility="package">
+          <Argument type="String" name="isbn"/>
+        </Method>
+        <Method name="validarIsbnUnico" returnType="void" visibility="package">
+          <Argument type="String" name="isbn"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="FichaBibliograficaServiceImpl" package="service" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="fichaDAO" type="FichaBibliograficaDao" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setFichaDAO" returnType="void" visibility="public">
+          <Argument type="FichaBibliograficaDao" name="fichaDAO"/>
+        </Method>
+        <Method name="crear" returnType="FichaBibliografica" visibility="public">
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="buscarPorId" returnType="FichaBibliografica" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="listarTodos" returnType="List&lt;FichaBibliografica&gt;" visibility="public"/>
+        <Method name="buscarPorIsbn" returnType="FichaBibliografica" visibility="public">
+          <Argument type="String" name="isbn"/>
+        </Method>
+        <Method name="validarIsbnUnico" returnType="void" visibility="public">
+          <Argument type="String" name="isbn"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="GenericService" package="service" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Methods>
+        <Method name="crear" returnType="T" visibility="package">
+          <Argument type="T" name="entidad"/>
+        </Method>
+        <Method name="buscarPorId" returnType="T" visibility="package">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="listarTodos" returnType="List&lt;T&gt;" visibility="package"/>
+        <Method name="actualizar" returnType="void" visibility="package">
+          <Argument type="T" name="entidad"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="package">
+          <Argument type="Long" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="LibroService" package="service" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Methods>
+        <Method name="crearLibroConFicha" returnType="void" visibility="package">
+          <Argument type="Libro" name="libro"/>
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="asignarFichaBibliografica" returnType="void" visibility="package">
+          <Argument type="Long" name="idLibro"/>
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="buscarPorTitulo" returnType="Libro" visibility="package">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="existeLibroConTitulo" returnType="boolean" visibility="package">
+          <Argument type="String" name="titulo"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="LibroServiceImpl" package="service" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="fichaService" type="FichaBibliograficaService" visibility="private"/>
+        <Field name="libroDAO" type="LibroDao" visibility="private"/>
+        <Field name="fichaDAO" type="FichaBibliograficaDao" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setLibroDAO" returnType="void" visibility="public">
+          <Argument type="LibroDao" name="libroDAO"/>
+        </Method>
+        <Method name="setFichaDAO" returnType="void" visibility="public">
+          <Argument type="FichaBibliograficaDao" name="fichaDAO"/>
+        </Method>
+        <Method name="setFichaService" returnType="void" visibility="public">
+          <Argument type="FichaBibliograficaService" name="fichaService"/>
+        </Method>
+        <Method name="crear" returnType="Libro" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="buscarPorId" returnType="Libro" visibility="public">
+          <Argument type="Long" name="id"/>
+        </Method>
+        <Method name="listarTodos" returnType="List&lt;Libro&gt;" visibility="public"/>
+        <Method name="crearLibroConFicha" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="asignarFichaBibliografica" returnType="void" visibility="public">
+          <Argument type="Long" name="idLibro"/>
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="buscarPorTitulo" returnType="Libro" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="existeLibroConTitulo" returnType="boolean" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ValidacionService" package="service.validations" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="validarFichaBibliografica" returnType="void" visibility="public" isStatic="true">
+          <Argument type="FichaBibliografica" name="ficha"/>
+        </Method>
+        <Method name="validarLibro" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="validarIsbnUnico" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="isbn"/>
+        </Method>
+        <Method name="validarTituloUnico" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="validarId" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Long" name="id"/>
+          <Argument type="String" name="entidad"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="dao.LibroDao" target="dao.GenericDao"/>
+    <UseRelation source="service.LibroServiceImpl" target="entities.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="service.validations.ValidacionService" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.LibroDao" target="entities.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="libroDAO" source="service.LibroServiceImpl" target="dao.LibroDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="service.LibroServiceImpl" target="service.LibroService"/>
+    <UseRelation source="dao.FichaBibliograficaDao" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="libroService" source="main.AppMenu" target="service.LibroService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="service.FichaBibliograficaService" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="service.FichaBibliograficaService" target="service.GenericService"/>
+    <UseRelation source="service.validations.ValidacionService" target="entities.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="service.LibroService" target="service.GenericService"/>
+    <UseRelation source="service.LibroService" target="entities.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="service.FichaBibliograficaServiceImpl" target="service.FichaBibliograficaService"/>
+    <HasRelation name="fichaDao" source="dao.LibroDao" target="dao.FichaBibliograficaDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fichaDAO" source="service.LibroServiceImpl" target="dao.FichaBibliograficaDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="service.LibroServiceImpl" target="service.FichaBibliograficaService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fichaBibliografica" source="entities.Libro" target="entities.FichaBibliografica" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="service.LibroService" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="service.FichaBibliograficaServiceImpl" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entities.Libro" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="dao.FichaBibliograficaDao" target="dao.GenericDao"/>
+    <UseRelation source="service.LibroServiceImpl" target="entities.FichaBibliografica" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fichaService" source="service.LibroServiceImpl" target="service.FichaBibliograficaService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fichaDAO" source="service.FichaBibliograficaServiceImpl" target="dao.FichaBibliograficaDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
